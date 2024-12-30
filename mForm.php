@@ -16,15 +16,21 @@
             <h1>CHRIST COMMONWEALTH COMMUNITY (CCC)</h1><br>
             <h3><span style="font-size: 1.2em;">Membership Registration Form</span></h3>
         </div>
-    <form>
+
+
+    <form id="memberform" action="member.php" method="POST" enctype="multipart/form-data" autocomplete="on">
+    <div class="fDetail">
+        <input type="hidden" name="id" id="memberId">
+        </div>
+
     <div class="fDetail">
         <label>Title</label><br>
-        <select id="placeholder">
+        <select id="placeholder" required autocomplete="off">
             <option>Select Title ...</option>
             <option>Mr.</option>
             <option>Mrs.</option>
             <option>Miss</option>
-        </select>
+</select>
     </div>
 
     <div class="fDetail">
@@ -114,31 +120,31 @@
     <div class="fDetail">
         <label>Auxiliary Department</label><br>
         <label>
-            <input type="checkbox" name="group1" value="option1"> Lead Presbyter
+            <input type="checkbox" name="department[]" value="option1"> Lead Presbyter
         </label>
         <label>
-            <input type="checkbox" name="group1" value="option1"> Pastoral Board
+            <input type="checkbox" name="department[]" value="option1"> Pastoral Board
         </label> 
         <label>
-            <input type="checkbox" name="group1" value="option1"> Board of Deacons
+            <input type="checkbox" name="department[]" value="option1"> Board of Deacons
         </label>
         <label>
-        <input type="checkbox" name="group1" value="option1"> Clergy Wives
+        <input type="checkbox" name="department[]" value="option1"> Clergy Wives
         </label>
          <label>
-        <input type="checkbox" name="group1" value="option1"> Music Department
+        <input type="checkbox" name="department[]" value="option1"> Music Department
          </label> 
         <label>
-        <input type="checkbox" name="group1" value="option1"> Media Department
+        <input type="checkbox" name="department[]" value="option1"> Media Department
         </label>
         <label>
-        <input type="checkbox" name="group1" value="option1"> Ushering Department
+        <input type="checkbox" name="department[]" value="option1"> Ushering Department
         </label>
         <label>
-        <input type="checkbox" name="group1" value="option1"> League of Extraordinary Ladies
+        <input type="checkbox" name="department[]" value="option1"> League of Extraordinary Ladies
         </label> 
         <label>
-        <input type="checkbox" name="group1" value="option1"> League of Extraordinary Gentlemen
+        <input type="checkbox" name="department[]" value="option1"> League of Extraordinary Gentlemen
         </label>
         </div>
 
@@ -150,5 +156,62 @@
 <footer>
     <p>&copy; 2024 Christ Commonwealth Community Membership Registration System</p>
 </footer>
+
+
+<script>
+    const urlParams =new URLSearchParams(window.location.search);
+    const memberId =urlParams.get('id');
+
+document.querySelector('.mfButton').addEventListener('click', async function(event) {
+    event.preventDefault();
+
+    const form = document.getElementById('memberForm');
+    const formData =new FormData(form);
+    const member =Object.fromEntries(formData.entries());
+
+    //HANDLE DEPARTMENT CHECKBOXES
+    const departments =formData.getAll('department[]');
+    member.department =departments.length ?departments : [];
+
+    if (memberId) {
+        await fetch(`member.php?id=${memberId}`, {
+            method: 'PUT',
+            body:FormData
+        });
+    }
+
+    window.location.href = 'overview.php';
+});
+
+    async function loadMember() {
+        if (memberId) {
+            const response = await fetch(`member.php?id=${memberId}`);
+            const member =await response.json();
+
+document.getElementById('memberId').value =memberId;
+
+            for (const key in member) {
+                if (member.hasOwnProperty(key)) {
+                    const input =document.querySelector(`[name="${key}"]`);
+                    if (input) {
+                        if (input.type === 'checkbox') {
+                            const departments =member[key] || [];
+
+ddepartments.forEach(department => {
+    const checkbox =document.querySelector(`input[name="department[]"][value="${department}"]`);
+    if (checkbox) checkbox.checked =true;
+});                           
+                        }else {
+                            input.Value =member[key];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    loadMember();
+
+</script>
 </body>
 </html>

@@ -2,10 +2,13 @@
 
 $host="localhost";
 $user="root";
-$pass="";
-$db="login";
-$conn=new mysqli($host,$user,$pass,$db);
-if($conn->connect_error){
-    echo "failed to connect DB".$conn->connect_error;
+$password="";
+$dbname="member_management";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db",$user,$pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Could not connect to the database $dbname :" . $e->getMessage());
 }
-?>
+?> 

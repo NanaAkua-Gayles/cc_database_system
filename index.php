@@ -11,7 +11,7 @@
     <div class="body-foreground">
     <div class="mrC">
         <img src="cc-logo.PNG" class="whiteLogo">
-    <h1 class="ih1">CHRIST COMMONWEALTH COMMUNITY (CCC) MEMBERSHIP REGISTRATION</h1>
+    <h1 class="ih1">CHRIST COMMONWEALTH COMMUNITY MEMBERSHIP REGISTRATION</h1>
     <p>By filling out a membership form, you're taking a bold step 
         into a family committed to growing in faith together. <br><br>Here, 
         you will find support, encouragement, and opportunities to serve

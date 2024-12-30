@@ -3,28 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ACCESS ADMIN</title>
+    <title>OVERVIEW</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="adminHeader">
             <h2>General Admin Dashboard</h2>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <div class="hamburger" id="hamburger">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </div>
-            <nav class="menu" id="menu">
-                <div class="close" id="close" onclick="toggleMenu()">
-                    <div class="bar" style="transform:rotate(45deg) translate(4px, 3px);"></div>
-                    <div class="bar" style="transform:rotate(-45deg) translate(3px, -4px);"></div>
-                </div>
-            </nav>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+<label for="menu-toggle" class="hamburger">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</label>
 
-            <div class="nav" id="desktop-menu">
-            </div>
+<nav class="menu">
+    <ul>
+        <li style="text-decoration: underline;"><a href="overview.php">OVERVIEW</a></li>       
+        <li><a href="members.php">MEMBERS</a></li>
+        <li><a href="settings.php">SETTINGS</a></li>
+        <li><a href="reports.php">REPORTS</a></li>
+        <li><a href="help.php">HELP & SUPPORT </a></li>
+    </ul>
+</nav>
+
+<nav class="nav-links">
+    <ul>            
+        <li><a href="overview.php">OVERVIEW</a></li>       
+        <li><a href="members.php">MEMBERS</a></li>
+        <li><a href="settings.php">SETTINGS</a></li>
+        <li><a href="reports.php">REPORTS</a></li>
+        <li><a href="help.php">HELP & SUPPORT</a></li>
+    </ul>
+</nav>
+      
 
             <div class="profile-card">
                 <div class="profile-photo" id="profilePhoto"></div>
@@ -49,12 +61,16 @@
         <div style="margin-top:10%; text-align:left; margin-left:20px"><strong>Logout</strong></div>
     </div>
 
-            <h2>Members List</h2>
-            <table id="registrations-table">
+                <a href="mForm.php" class="addNewMember">ADD A NEW MEMBER</a>
+
+                <h2>Members List</h2>
+
+            <div class="table-area">
+            <table id="registrationsTable">
                 <thead>
                     <tr style="background: #b2b2b2; color:white;">
                         <th>Title</th>
-                        <th>Full Name</th>
+                        <th class="fixed-column">Full Name</th>
                         <th>Picture</th>
                         <th>Gender</th>
                         <th>Date of Birth</th>
@@ -71,76 +87,14 @@
                         <th>Auxiliary Department</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="membersTableBody"></tbody>
             </table>
+            </div>
     <footer>
         <p>&copy; 2024 Christ Commonwealth Community Membership Registration System</p>
     </footer>
 
     <script>
-        
-//Menu Items
-const menuItems=[
-    {name: "Overview", link: "indexs.php"},
-    {name: "Members", link: "members.php"},
-    {name: "Settings", link: "settings.php"},
-    {name: "Reports", link: "reports.php"},
-    {name: "Help & Support", link: "help.php"},
-];
-
-//Mobile Menu
-function createMobileMenu() {
-    const menu =document.getElementById("menu");
-    menuItems.forEach(item => {
-        const anchor = document.createElement("a");
-                                    anchor.href = item.link;
-                                    anchor.innerText = item.name;
-
-                                    anchor.addEventListener("click", (event) => {
-                                        event.preventDefault();
-                                        handleMenuClick(item.name);
-                                    });
-
-                                    menu.appendChild(anchor);
-    });
-}
-
-
-//Function for creating desktop navigation
-function createDesktopMenu() {
-    const desktopMenu = document.getElementById("desktop-menu");
-    menuItems.forEach(item => {
-        const anchor = document.createElement("a");
-        anchor.href = item.link;
-        anchor.innerText =item.name;
-
-        anchor.addEventListener("click", (event) => {
-            event.preventDefault();
-            handleMenuClick(item.name);
-        });
-        desktopMenu.appendChild(anchor);
-    });
-}
-
-function handleMenuClick(menuItem) {
-    const content = document.getElementById("content");
-    content.innerHTML = `<div class="Welcome"><h2>${menuItem} Page</h2>
-    <p>Content for ${menuItem} goes here.</p></div>`;
-}
-
-function toggleMenu() {
-    const menu = document.getElementById("menu");
-    const hamburgerIcon = document.getElementById("hamburger");
-
-    menu.classList.toggle("active");
-    menu.style.display = menu.classList.contains("active") ? "flex" : "none";
-
-    if (menu.classList.contains("active")) {
-        hamburgerIcon.style.display = "none";
-    } else {
-        hamburgerIcon.style.display = "flex";
-    }
-}
 
 //Profile Photo
     const user = {
@@ -157,7 +111,7 @@ function toggleMenu() {
     const popup =document.getElementById('popup');
     const popupPhoto =document.getElementById('popupPhoto');
 
-    profilePhoto.onclick =function() {
+    profilePhoto.onclick = function() {
         popup.style.display = 'block';
         popupPhoto.textContent =initials.toUpperCase();
     };
@@ -196,6 +150,53 @@ profilePhoto.contains(event.target)) {
     createMobileMenu();
     createDesktopMenu();
 
+
+async function loadMembers() {
+    const response =await fetch('member.php');
+    const members =await response.json();
+
+    const tableBody =document.querySelector('#registrationsTable tbody');
+    tableBody.innerHTML = '';
+
+    members.forEach(member => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${member.title}</td>
+        <td>${member.fullName}</td>
+        <td><img src="${member.picture}" alt="${mmember.fullName}'s Picture" style="width:100px; height:auto;"></td>
+        <td>${member.gender}</td>
+        <td>${member.dob}</td>
+        <td>${member.phone}</td>
+        <td>${member.email}</td>
+        <td>${member.address}</td>
+        <td>${member.maritalStatus}</td>
+        <td>${member.nationality}</td>
+        <td>${member.education}</td>
+        <td>${member.profession}</td>
+        <td>${member.emergencyContact}</td>
+        <td>${member.team}</td>
+        <td>${member.department.join(', ')}</td>
+        <td>
+        <td>
+        <button onclick="editMembers(${member.id})">Edit</button>
+        <button onclick="deleteMember(${member.id})">Delete</button>
+        </td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+    function editMember(id) {
+        window.location.href = `mForm.php?id=${id}`;
+    }
+
+    async function deleteMember(id) {
+        await fetch(`member.php>id=${id}`, { method: 'DELETE' });
+        loadMembers();
+    }
+
+
+loadMembers();
 
     </script>
 </body>
