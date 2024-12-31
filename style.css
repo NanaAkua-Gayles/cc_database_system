@@ -97,11 +97,6 @@ body{
     color: rgb(240, 21, 105);
     margin-bottom: 20%;
 }
-@media (max-width:76px) {
-    .fHeadings{
-        margin-bottom: 40%;
-    }
-}
 .fDetail{
     display: flex;
     flex-direction: column;
@@ -122,6 +117,18 @@ body{
     border-radius: 7px;
     background-color: rgb(240, 21, 105);
     color: #fff;
+}
+@media (max-width:768px) {
+    .fHeadings{
+        margin-bottom: 0;
+        padding: 10px;
+    }
+    .fDetail{
+        margin-top: 10px;
+    }
+    #placeholder{
+        width: 100%;
+    }    
 }
 
 
@@ -188,9 +195,15 @@ body{
     cursor: pointer;
 }
 @media (max-width:768px) {
+    .registerLink{
+        padding: 1px;
+    }    
     .sBtn{
-        font-size: 0.8em;
+        font-size: 0.85em;
     }
+    .loginButton{
+        font-size: 1em;
+    }    
 }
 
 
