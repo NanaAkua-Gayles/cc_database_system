@@ -1,45 +1,37 @@
-/* Css for mrform */
+/* Css for INDEX.HTML */
 body{
-    font-family: Arial, Helvetica, sans-serif;
-}
-.bdBg{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url(bg2.JPG); 
-    background-position: center;
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    position: center; 
-    filter: blur(2px);
-    z-index: 0;
-}
-.body-foreground{
-    width: 100%s;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0,0,0,0.7);
-    color: white;
-    text-align: center;
-    font-size: 1.4em;
+    font-family: calibri;
+    font-size: 1em;
 }
 .mrC{
     max-width: 700px;
     height: auto;
     margin: 40px auto;
     padding: 35px 40px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    font-size: 1.3em;
 }
-.whiteLogo{
-    width: 600px;
-    margin-bottom: -37%;
-    margin-top: -25%;
+.ih1{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    background-color: #da3788;
+    color: white;
+    font-size: 1.5em;
+}
+.indexLogo{
+    position: relative;
+    width: 40%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
 }
 .bOptions{
     display: flex;
@@ -53,26 +45,30 @@ body{
 .mR{
     width: 50%;
     height: 40px;
-    pad: 20px;
+    padding: 10px;
     border-radius: 30px;
-    border: 1px solid #fff;
+    text-align: center;
+    border: 2px solid #7a288a;
     background: none;
 }
 .mrLink{
-    color: #fff;
+    color: #7a288a;
     text-decoration: none;
 }
 @media (max-width: 768px) {
-    .body-foreground{
-        font-size: 1.3em;
-    }
     .ih1{
-        font-size: 1.5em;
+        font-size: 0.7em;
     }
-    .whiteLogo{
-        width: 300px;
-        margin-bottom: -35%;
+    .indexLogo{
+        width: 50%;
     }
+    .mR{
+        width: 70%;
+        height: 50px;
+    }
+    .mrC{
+        font-size: 1em; 
+    }       
 }
 
 
@@ -95,6 +91,11 @@ body{
     padding: 20px;
     color: rgb(240, 21, 105);
     margin-bottom: 20%;
+}
+@media (max-width:76px) {
+    .fHeadings{
+        margin-bottom: 40%;
+    }
 }
 .fDetail{
     display: flex;
@@ -187,7 +188,7 @@ body{
 .adminHeader{
     background-color: #35424a;
     color: #ffffff;
-    padding: 10px 20px;
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -206,7 +207,7 @@ body{
     height: 30px;
     pointer-events: auto;
     margin-top: 0;
-    margin-left: 72%;
+    margin-left: 65%;
     z-index: 1000;
 }
 .bar{
@@ -224,7 +225,7 @@ body{
     right: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 5;
     padding: 50px 10px;
     background-color: #35424a;
 }
@@ -260,10 +261,11 @@ body{
     height: auto;
     right: 0;
     left: 0;
-    padding: 20px;
+    padding: 15px;
     height: 10%;
     align-items: center;
     justify-content: center;
+    font-size: 0.9em;
 }
 .nav-links ul{
     list-style: none;
@@ -272,26 +274,13 @@ body{
 }
 .nav-links li{
     display: inline-block;
-    margin-right: 65px;
+    margin-right: 50px;
 }
 .nav-links a{
     text-decoration: none;
     color: #fff;
     font-weight: bold;
     font-size: 1em;
-}
-@media (min-width:769px) {
-    .hamburger{
-        display: none;
-    }
-    .menu{
-        display: none;
-    }
-    .nav-links{
-        display: flex;
-        position: absolute;
-        justify-content: flex-end;
-    }
 }
 @media (max-width:769px) {
     .menu-toggle:checked ~ .menu{
@@ -305,6 +294,13 @@ body{
         position: absolute;
         opacity: 0;
         cursor: pointer;
+    }
+    .bar{
+        height: 2.5px;
+        width: 80%;
+    }
+    .ah1{
+        font-size: 1.2em;
     }
 }
 .profile-photo{
@@ -405,5 +401,16 @@ footer{
     }
     .menu-toggle{
         display: none;
+    }
+    .nav-links{
+        display: flex;
+        position: absolute;
+        justify-content: flex-end;
+    }
+    .hamburger{
+        display: none;
+    }   
+    .ah1{
+        font-size: 1.2em;
     }
 }
