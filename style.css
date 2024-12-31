@@ -83,6 +83,11 @@ body{
     border-radius: 10px;
     background-color: white;
 }
+@media (max-width:768px) {
+    .membershipGrouping{
+        font-size: 1em;
+    }    
+}
 .fHeadings{
     height: 30vh;
     text-align: center;
@@ -181,6 +186,11 @@ body{
     font-size: 1em;
     text-align: right;
     cursor: pointer;
+}
+@media (max-width:768px) {
+    .sBtn{
+        font-size: 0.8em;
+    }
 }
 
 
