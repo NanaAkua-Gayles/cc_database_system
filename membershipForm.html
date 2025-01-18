@@ -18,19 +18,21 @@
         </div>
 
 
-    <form id="memberform" action="member.php" method="POST">
+    <form id="memberform" action="member.php" method="POST" enctype="multipart/form-data">
     <div class="fDetail"> 
         <input type="hidden" name="id" id="memberId">
         </div>
 
     <div class="fDetail">
-        <label>Title</label><br>
-        <select id="placeholder" required>
-            <option name="title">Select Title ...</option>
-            <option name="title">Mr.</option>
-            <option name="title">Mrs.</option>
-            <option name="title">Miss</option>
-</select>
+        <label id="lbl">Title</label><br>
+        <input type="radio" name="title" id="title1" class="custom-radio">
+        <label class="radio-label" for="title1">Mr.</label>
+    
+        <input type="radio" name="title" id="title2" class="custom-radio">
+        <label class="radio-label" for="title2">Mrs.</label>
+
+        <input type="radio" name="title" id="title3" class="custom-radio">
+        <label class="radio-label" for="title3">Miss</label>
     </div>
 
     <div class="fDetail">
@@ -43,16 +45,15 @@
         <label for="picture-upload" id="lbl">Passport Size Picture</label><br>
         <div class="picture-placeholder"></div>
             <input type="file" id="picture-upload" name="image" accept="image/*">
-        </label>
     </div>
 
     <div class="fDetail">
-        <label id="lbl">Gender <span style="color: red;">*</span></label><br>
-        <select id="placeholder">
-            <option name="gender">Select Gender ...</option>
-            <option name="gender">Male</option>
-            <option name="gender">Female</option>
-        </select>
+        <label for="gender" id="lbl">Gender <span style="color: red;">*</span></label><br>
+        <input type="radio" name="gender" id="gender1" class="custom-radio">
+        <label class="radio-label" for="gender1">Male</label>
+    
+        <input type="radio" name="gender" id="gender2" class="custom-radio">
+        <label class="radio-label" for="gender2">Female</label>
     </div>    
 
     <div class="fDetail">
@@ -77,10 +78,11 @@
 
     <div class="fDetail">
         <label id="lbl">Marital Status</label><br>
-        <select id="placeholder1">
-            <option name="maritalStat">Single</option>
-            <option name="maritalStat">Married </option>
-        </select> 
+        <input type="radio" name="maritalStatus" id="status1" class="custom-radio">
+        <label class="radio-label" for="status1">Single</label>
+    
+        <input type="radio" name="maritalStatus" id="status2" class="custom-radio">
+        <label class="radio-label" for="status2">Married</label>
     </div>
 
     <div class="fDetail">
@@ -90,35 +92,38 @@
 
     <div class="fDetail">
     <label id="lbl">Educational Level</label><br>
-    <select id="placeholder">
-        <option name="education">Basic Education</option>
-        <option name="education">Secondary Education</option> 
-        <option name="education">Tertiary Education</option>
-    </select>
+        <input type="radio" name="education" id="education1" class="custom-radio">
+        <label class="radio-label" for="education1">Basic Education</label>
+    
+        <input type="radio" name="education" id="education2" class="custom-radio">
+        <label class="radio-label" for="education2">Secondary Education</label>
+   
+        <input type="radio" name="education" id="education3" class="custom-radio">
+        <label class="radio-label" for="education3">Tertiary Education</label> 
     </div>
 
     <div class="fDetail">
-        <label>Profession </label><br><br>
+        <label id="lbl">Profession </label><br><br>
             <input type="text" name="profession" id="placeholder">
     </div>
 
     <div class="fDetail">
-        <label>Name of Emergency Contact <span style="color: red;">*</span></label><br><br>
+        <label id="lbl">Name of Emergency Contact <span style="color: red;">*</span></label><br><br>
             <input type="text" name="emergencyContactName" id="placeholder" required>
     </div>
 
     <div class="fDetail">
-        <label>Emergency Contact <span style="color: red;">*</span></label><br><br>
+        <label id="lbl">Emergency Contact <span style="color: red;">*</span></label><br><br>
             <input type="text" name="emergencyContact" id="placeholder" required>
     </div>
 
     <div class="fDetail">
-        <label>Name of your Team <span style="color: red;">*</span></label><br><br>
+        <label id="lbl">Name of your Team <span style="color: red;">*</span></label><br><br>
             <input type="text" name="team" id="placeholder" required>
     </div>
 
     <div class="fDetail">
-        <label>Auxiliary Department</label><br>
+        <label id="lbl">Auxiliary Department</label><br>
         <label>
             <input type="checkbox" name="department[]" value="option1"> Lead Presbyter
         </label>
@@ -148,7 +153,7 @@
         </label>
         </div>
 
-    <button type="submit" class="mfButton">Submit</button>
+    <button type="submit" value="Submit" class="mfButton">Submit</button>
 </form>
 </div>
 </section>

@@ -95,19 +95,52 @@ body{
     align-items: center;
     padding: 20px;
     color: rgb(240, 21, 105);
-    margin-bottom: 20%;
+    margin-bottom: 5%;
 }
 .fDetail{
     display: flex;
     flex-direction: column;
     padding: 15px;
-    margin-top: 30px;
+    margin-top: 15px;
+}
+#lbl{
+    font-weight: bold;
 }
 #placeholder{
+    display: block;
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    appearance: none;
+    box-sizing: border-box;
+}
+.custom-radio{
+    display: none;
+}
+.radio-label{
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 0.8em;
+}
+.radio-label::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background: #ffffff;
+    transition: background 0.3s;
+}
+.custom-radio:checked + .radio-label::before{
+    background: blue;
 }
 .mfButton{
     width: 20%;
